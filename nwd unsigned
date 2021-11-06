@@ -1,0 +1,88 @@
+#define _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_DEPRECATE
+#define _CRT_NONSTDC_NO_DEPRECATE
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <math.h>
+#include <locale.h>
+
+#pragma warning( push, 4 )
+
+int main(void)
+{
+
+	(void)setlocale(LC_ALL, "pl-PL");
+
+	long long unsigned a;
+	long long unsigned b;
+
+	printf("Podaj pierwszą liczbę:");
+	if (scanf("%llu", &a) != 1) {
+		while (scanf("%llu", &a) != 1) {
+			printf("To nie jest liczba!\n");
+			printf("Podaj pierwszą liczbę:");
+			scanf("%llu", &a);
+			fseek(stdin, 0, SEEK_END);
+		}
+	}
+	else if (a <= 0) {
+		while (a <= 0) {
+			printf("Liczba musi być większa od 0!\n");
+			printf("Podaj pierwszą liczbę:");
+			scanf("%llu", &a);
+			fseek(stdin, 0, SEEK_END);
+		}
+	}
+	else if (a > INT_MAX) {
+		while (a > INT_MAX) {
+			printf("Liczba musi być większa od 0!\n");
+			printf("Podaj pierwszą liczbę:");
+			scanf("%llu", &a);
+			fseek(stdin, 0, SEEK_END);
+		}
+	}else {
+		a = a;
+	}
+
+
+	printf("Podaj drugą liczbę:");
+	if (scanf("%llu", &b) != 1) {
+		while (scanf("%llu", &b) != 1) {
+			printf("To nie jest liczba!\n");
+			printf("Podaj pierwszą liczbę:");
+			scanf("%llu", &b);
+			fseek(stdin, 0, SEEK_END);
+		}
+	}
+	else if (b <= 0) {
+		while (b <= 0) {
+			printf("Liczba musi być większa od 0!\n");
+			printf("Podaj drugą liczbę:");
+			scanf("%llu", &b);
+			fseek(stdin, 0, SEEK_END);
+		}
+	}
+	else {
+		b = b;
+	}
+
+	int check = 1;
+
+	while (check == 1) {
+		if (a == b) {
+			printf("%llu", a);
+			check = 0;
+		}
+		else if (a > b) {
+			a = a - b;
+		}
+		else {
+			b = b - a;
+		}
+	}
+
+	return EXIT_SUCCESS;
+}
+#pragma warning(pop)
