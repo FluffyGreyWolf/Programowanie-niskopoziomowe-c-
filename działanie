@@ -1,0 +1,44 @@
+#define _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_DEPRECATE
+#define _CRT_NONSTDC_NO_DEPRECATE
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+#include <math.h>
+#include <locale.h>
+#include <ctype.h>
+
+#pragma warning( push, 4 )
+
+int main(void)
+{
+
+	(void)setlocale(LC_ALL, "pl-PL");
+
+	long double a;
+	long double b;
+
+	printf("Podaj pierwszą liczbę:");
+
+	while (scanf("%Lg", &a) != 1) {
+		printf("To nie jest liczba!\n");
+		printf("Podaj pierwszą liczbę:");
+		scanf("%Lg", &a);
+		fseek(stdin, 0, SEEK_END);
+	}
+	printf("Podaj drugą liczbę:");
+	while (scanf("%Lg", &b) != 1) {
+		printf("To nie jest liczba!\n");
+		printf("Podaj drugą liczbę:");
+		scanf("%Lg", &b);
+		fseek(stdin, 0, SEEK_END);
+	}
+	
+	long double wynik = pow(a, 2)+b/pow(a+b, 2);
+
+	printf("%Lg", wynik);
+
+	return EXIT_SUCCESS;
+}
+#pragma warning(pop)
