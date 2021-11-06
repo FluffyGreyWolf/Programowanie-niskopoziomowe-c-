@@ -20,10 +20,10 @@ int main(void)
 
 	printf("Podaj pierwszą liczbę:");
 	while (scanf("%Lg", &a) != 1) {
-		printf("To nie jest liczba!\n");
-		printf("Podaj pierwszą liczbę:");
-		scanf("%Lg", &a);
-		fseek(stdin, 0, SEEK_END);
+			printf("To nie jest liczba!\n");
+			printf("Podaj pierwszą liczbę:");
+			scanf("%Lg", &a);
+			fseek(stdin, 0, SEEK_END);
 	}
 
 	printf("Podaj drugą liczbę:");
@@ -34,9 +34,13 @@ int main(void)
 		fseek(stdin, 0, SEEK_END);
 	}
 	
-	long double wynik = pow(a, 2)+b/pow(a+b, 2);
-
-	printf("%Lg", wynik);
+	if (a + b == 0) {
+		printf("Mianownik rówmy 0!");
+	}
+	else {
+		long double wynik = pow(a, 2) + b / pow(a + b, 2);
+		printf("%Lg", wynik);
+	}
 
 	return EXIT_SUCCESS;
 }
