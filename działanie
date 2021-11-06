@@ -19,13 +19,13 @@ int main(void)
 	long double b;
 
 	printf("Podaj pierwszą liczbę:");
-
 	while (scanf("%Lg", &a) != 1) {
 		printf("To nie jest liczba!\n");
 		printf("Podaj pierwszą liczbę:");
 		scanf("%Lg", &a);
 		fseek(stdin, 0, SEEK_END);
 	}
+
 	printf("Podaj drugą liczbę:");
 	while (scanf("%Lg", &b) != 1) {
 		printf("To nie jest liczba!\n");
