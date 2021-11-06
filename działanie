@@ -7,7 +7,6 @@
 #include <conio.h>
 #include <math.h>
 #include <locale.h>
-#include <ctype.h>
 
 #pragma warning( push, 4 )
 
