@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
+
+int main(int argc, char *argv[])
+{
+    int pdesk[2];
+
+    if (pipe(pdesk) == -1)
+    {
+        perror("Error while creating a pipe");
+        exit(1);
+    }
+
+    switch (fork())
+    {
+    case -1:
+        perror("Error while creating a process");
+        exit(1);
+    case 0: // child process
+        dup2(pdesk[1], 1);
+        execvp("finger", argv);
+        perror("Error while executing ls");
+        exit(1);
+    default:
+    { // parent process
+        close(pdesk[1]);
+        dup2(pdesk[0], 0);
+        execlp("cut", "cut", "-d ", "-f1", NULL);
+        perror("Error while executing tr");
+        exit(1);
+    }
+    }
+}
+
+// https://www.cs.put.poznan.pl/dwawrzyniak/PW/projekty.html - do 50 = 4, 50 w górę = 5, 100p można we 2
