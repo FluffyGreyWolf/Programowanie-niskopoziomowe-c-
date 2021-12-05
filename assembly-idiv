@@ -1,0 +1,29 @@
+#define _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_DEPRECATE
+#define _CRT_NONSTDC_NO_DEPRECATE
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+
+#include <locale.h>
+
+#pragma warning( push, 4 )
+
+int main(void)
+{
+	int a, b, c;
+	scanf("%d", &a);
+	scanf("%d", &b);
+	printf("Wprowadziłeś a=%d, b=%d", a, b);
+	// c = a / b, sprawdzić dla a=-6 i a=2
+	__asm
+	{
+		mov eax, a
+		cdq
+		idiv b
+		mov c, eax
+	}
+	printf("\n%d\n", c);
+}
+#pragma warning(pop)
