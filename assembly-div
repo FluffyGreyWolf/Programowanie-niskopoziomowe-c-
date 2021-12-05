@@ -1,0 +1,29 @@
+#define _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_DEPRECATE
+#define _CRT_NONSTDC_NO_DEPRECATE
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+
+#include <locale.h>
+
+#pragma warning( push, 4 )
+
+int main(void)
+{
+	unsigned short a, b, c;
+	scanf("%hu", &a);
+	scanf("%hu", &b);
+	printf("Wprowadziłeś a=%hu, b=%hu", a, b);
+	// c = a / b
+	__asm
+	{
+		mov ax, a
+		mov dx, 0
+		div b
+		mov c, ax
+	}
+	printf("\n%hu\n", c);
+}
+#pragma warning(pop)
