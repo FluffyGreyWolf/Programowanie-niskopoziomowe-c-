@@ -1,0 +1,27 @@
+#define _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_DEPRECATE
+#define _CRT_NONSTDC_NO_DEPRECATE
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+
+#include <locale.h>
+
+#pragma warning( push, 4 )
+
+int main(void)
+{
+	int a, b, c;
+	scanf("%d", &a);
+	scanf("%d", &b);
+	// c = a + b
+	__asm
+	{
+		mov eax, a
+		add eax, b
+		mov c, eax
+	}
+	printf("\n%d\n", c);
+}
+#pragma warning(pop)
