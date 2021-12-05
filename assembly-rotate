@@ -1,0 +1,26 @@
+#define _CRT_SECURE_NO_WARNINGS
+#define _CRT_SECURE_NO_DEPRECATE
+#define _CRT_NONSTDC_NO_DEPRECATE
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
+
+#include <locale.h>
+
+#pragma warning( push, 4 )
+
+int main(void)
+{
+	unsigned num, bits;
+	// dla num=0x12345678, bits = 4 => 23456781
+	scanf("%x", &num);
+	scanf("%u", &bits);
+	__asm
+	{
+		mov ecx, bits
+		rol num, cl
+	}
+	printf("\n%x\n", num);
+}
+#pragma warning(pop)
